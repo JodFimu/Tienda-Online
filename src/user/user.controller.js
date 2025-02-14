@@ -105,7 +105,28 @@ export const updatePassword = async (req, res) => {
     }
 };
 
-export const updateUser = async (req, res) => {
+export const updateUserAdmin = async (req, res) => {
+    try {
+        const { usuario } = req;
+        const data = req.body;
+
+        const updatedUser = await User.findByIdAndUpdate(usuario._id, data, { new: true });
+
+        res.status(200).json({
+            success: true,
+            msg: 'Usuario Actualizado',
+            user: updatedUser,
+        });
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            msg: 'Error al actualizar usuario',
+            error: err.message
+        });
+    }
+};
+
+export const updateUserUser = async (req, res) => {
     try {
         const { uid } = req.params;
         const data = req.body;
