@@ -52,7 +52,7 @@ export const getUsers = async (req, res) => {
     }
 };
 
-export const deleteUser = async (req, res) => {
+export const deleteUserAdmin = async (req, res) => {
     try {
         const { uid } = req.params;
 
@@ -72,12 +72,32 @@ export const deleteUser = async (req, res) => {
     }
 };
 
+export const deleteUserClient = async (req, res) => {
+    try {
+        const { usuario } = req.params;
+
+        const user = await User.findByIdAndUpdate(usuario._id, { status: false }, { new: true });
+
+        return res.status(200).json({
+            success: true,
+            message: "Usuario eliminado",
+            user
+        });
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            message: "Error al eliminar el usuario",
+            error: err.message
+        });
+    }
+};
+
 export const updatePassword = async (req, res) => {
     try {
-        const { uid } = req.params;
+        const { usuario } = req;
         const { newPassword } = req.body;
 
-        const user = await User.findById(uid);
+        const user = await User.findById(usuario._id);
 
         const matchOldAndNewPassword = await verify(user.password, newPassword);
 
@@ -128,10 +148,10 @@ export const updateUserAdmin = async (req, res) => {
 
 export const updateUserUser = async (req, res) => {
     try {
-        const { uid } = req.params;
+        const { usuario } = req;
         const data = req.body;
 
-        const updatedUser = await User.findByIdAndUpdate(uid, data, { new: true });
+        const updatedUser = await User.findByIdAndUpdate(usuario._id, data, { new: true });
 
         res.status(200).json({
             success: true,
@@ -146,3 +166,24 @@ export const updateUserUser = async (req, res) => {
         });
     }
 };
+
+export const updateRole = async (req,res) =>{
+    try {
+        const { uid } = req.params;
+        const newRole = "ADMIN_ROLE";
+
+        const updatedUser = await User.findByIdAndUpdate(uid, { role: newRole }, { new: true });
+
+        res.status(200).json({
+            success: true,
+            msg: 'Usuario Actualizado',
+            user: updatedUser,
+        });
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            msg: 'Error al actualizar usuario',
+            error: err.message
+        });
+    }
+}

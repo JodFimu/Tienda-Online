@@ -1,19 +1,26 @@
 import { Router } from "express";
-import { getUserById,getUsers,deleteUser, updatePassword,updateUserUser, updateUserAdmin} from "./user.controller.js";
-import { getUserByIdValidator,deleteUserValidator, updatePasswordValidator, updateUserValidatorAdmin, createUserValidation} from "../middlewares/user-validators.js";
-import { register } from "../user/auth.controller.js"
+import { getUserById,getUsers,deleteUserAdmin, updatePassword,updateUserUser, updateUserAdmin, updateRole, deleteUserClient} from "./user.controller.js";
+import { getUserByIdValidator, updatePasswordValidator, deleteUserValidatorClient, deleteUserValidatorAdmin, createUserValidation,
+    updateRoleValidator, getUserValidation
+} from "../middlewares/user-validators.js";
+import { register } from "../auth/auth.controller.js"
 
 const router = Router();
 
 router.get("/findUser/:uid", getUserByIdValidator, getUserById);
 
-router.get("/", getUsers);
+router.get("/", getUserValidation, getUsers);
 
-router.delete("/deleteUser/:uid", deleteUserValidator, deleteUser);
+router.delete("/deleteUserAdmin/:uid", deleteUserValidatorAdmin, deleteUserAdmin);
+router.delete("/deleteUserClient", deleteUserValidatorClient, deleteUserClient);
 
-router.patch("/updatePassword/:uid", updatePasswordValidator, updatePassword);
+router.patch("/updatePassword", updatePasswordValidator, updatePassword);
 
-router.put("/updateUser", updateUserValidatorClient, updateUserUser);
-router.put("/updateUserAdmin/:uid", updateUserValidatorAdmin, updateUserAdmin)
+router.put("/updateUser", deleteUserValidatorClient, updateUserUser);
+router.put("/updateUserAdmin/:uid", deleteUserValidatorAdmin, updateUserAdmin)
 
 router.post("/createUser",createUserValidation,register)
+
+router.patch("/updateRole/:uid", updateRoleValidator,updateRole)
+
+export default router;

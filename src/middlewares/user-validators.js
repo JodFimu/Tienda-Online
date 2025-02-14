@@ -2,8 +2,9 @@ import { body, param } from "express-validator";
 import { emailExists, usernameExists, userExists } from "../helpers/db-validators.js";
 import { validarCampos } from "./validate-fields.js";
 import { handleErrors } from "./handle-errors.js";
-import {isClient} from "../helpers/"
+import {isClient} from "../helpers/db-validators.js"
 import { validateJWT } from "../middlewares/validate-jwt.js"
+import { hasRoles } from "../middlewares/validate-roles.js"
 
 
 export const registerValidator = [
@@ -24,6 +25,13 @@ export const registerValidator = [
     handleErrors
 ];
 
+export const getUserValidation = [
+    validateJWT,
+    hasRoles("ADMIN_ROLE"),
+    validarCampos,
+    handleErrors
+]
+
 export const loginValidator = [
     body("email").optional().isEmail().withMessage("No es un email válido"),
     body("username").optional().isString().withMessage("Username es en formáto erróneo"),
@@ -41,9 +49,9 @@ export const getUserByIdValidator = [
     handleErrors
 ];
 
-export const deleteUserValidator = [
+export const deleteUserValidatorAdmin = [
     validateJWT,
-    hasRoles("ADMIN_ROLE", "CLIENT_ROLE"),
+    hasRoles("ADMIN_ROLE"),
     param("uid").isMongoId().withMessage("No es un ID válido de MongoDB"),
     param("uid").custom(isClient),
     param("uid").custom(userExists),
@@ -51,11 +59,16 @@ export const deleteUserValidator = [
     handleErrors
 ];
 
+export const deleteUserValidatorClient = [
+    validateJWT,
+    hasRoles("CLIENT_ROLE"),
+    validarCampos,
+    handleErrors
+]
+
 export const updatePasswordValidator = [
     validateJWT,
     hasRoles("ADMIN_ROLE", "CLIENT_ROLE"),
-    param("uid").isMongoId().withMessage("No es un ID válido de MongoDB"),
-    param("uid").custom(userExists),
     body("newPassword").isLength({ min: 8 }).withMessage("El password debe contener al menos 8 caracteres"),
     validarCampos,
     handleErrors
@@ -97,4 +110,15 @@ export const createUserValidation = [
     validarCampos,
     handleErrors
 ]
+
+export const updateRoleValidator =[
+    validateJWT,
+    hasRoles("ADMIN_ROLE"),
+    param("uid", "No es un ID válido").isMongoId(),
+    param("uid").custom(isClient),
+    param("uid").custom(userExists),
+    validarCampos,
+    handleErrors
+]
+
 

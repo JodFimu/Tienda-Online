@@ -1,5 +1,4 @@
 import User from "../user/user.model.js"
-import Pet from "../pet/pet.model.js"
 
 export const emailExists = async (email = "") => {
     const existe = await User.findOne({email})
@@ -49,7 +48,7 @@ export const isAdmin = async (uid = " ") =>{
 
 export const isHimself = async (uid = " ")=>{
     const user = await User.findById(uid)
-    
+
     return (req, res, next) =>{
         if(!req.usuario){
             return res.status(500).json({
