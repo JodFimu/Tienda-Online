@@ -47,3 +47,48 @@ export const createCategory = async (req, res) => {
         });
     }
 }
+
+export const updateCategory = async (req, res) => {
+    try{
+        const {name} = req.body;
+        const { cid } = req.params;
+
+
+        const category = await Category.findByIdAndUpdate(cid, {name: name}, {new: true})
+
+        return res.status(200).json({
+            success: true,
+            message: 'Categoria actualizada',
+            category
+        });        
+    }catch(err){
+        return res.status(500).json({
+            success: false,
+            message: 'Error al actualizar la categoria',
+            error: err.message
+        });
+    }
+}
+
+export const deleteCategory = async (req, res) => {
+    try {
+        const { cid } = req.params;
+
+        const category = await Category.findByIdAndUpdate(cid, { status: false }, { new: true });
+
+        //codigo para asignar los productos a la categoria por defecto
+
+        return res.status(200).json({
+            success: true,
+            message: 'Categoria eliminada',
+            category
+        });
+
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            message: 'Error al eliminar la categoria',
+            error: err.message
+        });
+    }
+}

@@ -16,7 +16,7 @@ const categorySchema = new Schema({
 
 categorySchema.methods.toJSON = function(){
     const {_id, ...category} = this.toObject()
-    category.uid = _id
+    category.cid = _id
     return category
 }
 
