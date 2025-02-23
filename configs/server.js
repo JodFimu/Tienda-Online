@@ -9,6 +9,8 @@ import { swaggerDocs, swaggerUi } from "./swagger.js";
 import  apiLimiter from "../src/middlewares/rate-limit-validator.js";
 import authRoutes from "../src/auth/auth.routes.js"
 import userRoutes from "../src/user/user.routes.js"
+import categoryRoutes from "../src/category/category.routes.js"
+import {createAdmin, createDefaultCategory} from "./default-data.js"
 
 const middlewares = (app) => {
     app.use(express.urlencoded({ extended: false }));
@@ -22,7 +24,8 @@ const middlewares = (app) => {
 const routes = (app) => {
     app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
     app.use("/KinalShop/v1/auth", authRoutes);
-    app.use("/KinalShop/v1/user", userRoutes)
+    app.use("/KinalShop/v1/user", userRoutes);
+    app.use("/KinalShop/v1/category", categoryRoutes);
 }
 
 const conectarDB = async () => {
@@ -40,6 +43,8 @@ export const initServer = () => {
         middlewares(app);
         conectarDB();
         routes(app);
+        createAdmin();
+        createDefaultCategory();
         const port = process.env.PORT; 
         app.listen(port, () => {
             console.log(`Server running on port ${port}`);
