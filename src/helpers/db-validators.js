@@ -66,3 +66,11 @@ export const isHimself = async (uid = " ")=>{
         next()
     }
 }
+
+export const categoryExist = async (name = " ")=>{
+    const exist = await Category.findOne(name)
+
+    if(existe){
+        throw new Error(`la categoria: ${name} ya existe`)
+    }
+}
