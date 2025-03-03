@@ -107,3 +107,61 @@ export const getProductsById = async (req,res) => {
         })
     }
 }
+
+
+
+export const inventory = async (req,res) => {
+    try{
+        const { limite = 5, desde = 0 } = req.query
+        const query = { status: true }
+    
+        const [total, products ] = await Promise.all([
+            Product.countDocuments(query),
+            Product.find(query)
+                .skip(Number(desde))
+                .limit(Number(limite))
+                .select('name quantity _id')
+        ])
+    
+        return res.status(200).json({
+            succes: true,
+            message: "productos encontrados",
+            total,
+            products
+        });
+    }catch(err){
+        return res.status(500).json({
+            success: false,
+            msg: 'Error al mostrar el inventario',
+            error: err.message
+        });
+    }
+}
+
+export const soldOutProducts = async (req,res) => {
+    try{
+        const { limite = 5, desde = 0 } = req.query
+        const query = { status: true, quantity: 0 }
+    
+        const [total, products ] = await Promise.all([
+            Product.countDocuments(query),
+            Product.find(query)
+                .skip(Number(desde))
+                .limit(Number(limite))
+                .select('name quantity _id')
+        ])
+    
+        return res.status(200).json({
+            succes: true,
+            message: "productos agotados",
+            total,
+            products
+        });
+    }catch(err){
+        return res.status(500).json({
+            success: false,
+            msg: 'Error al listar los productos agotados',
+            error: err.message
+        });
+    }
+}

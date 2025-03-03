@@ -51,3 +51,17 @@ export const updateProductValidator = [
     deleteFileOnError,
     handleErrors
 ]
+
+export const inventoryValidator = [
+    validateJWT,
+    hasRoles("ADMIN_ROLE"),
+    validarCampos,
+    handleErrors
+]
+
+export const soldOutValidator = [
+    validateJWT,
+    hasRoles("ADMIN_ROLE"),
+    validarCampos,
+    handleErrors
+]

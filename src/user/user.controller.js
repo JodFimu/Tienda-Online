@@ -167,7 +167,7 @@ export const updateUserUser = async (req, res) => {
     }
 };
 
-export const updateRole = async (req,res) =>{
+export const updateRole = async (req,res) => {
     try {
         const { uid } = req.params;
         const newRole = "ADMIN_ROLE";
