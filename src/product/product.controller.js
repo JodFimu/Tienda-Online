@@ -36,7 +36,7 @@ export const createProduct = async (req, res) => {
 export const getProducts = async (req, res) => {
     try {
         const { limite = 5, desde = 0 } = req.query
-        const query = { status: true }
+        const query = { status: true}
     
         const [total, products ] = await Promise.all([
             Product.countDocuments(query),
@@ -141,7 +141,7 @@ export const inventory = async (req,res) => {
 export const soldOutProducts = async (req,res) => {
     try{
         const { limite = 5, desde = 0 } = req.query
-        const query = { status: true, quantity: 0 }
+        const query = { quantity: 0 }
     
         const [total, products ] = await Promise.all([
             Product.countDocuments(query),
@@ -162,6 +162,62 @@ export const soldOutProducts = async (req,res) => {
             success: false,
             msg: 'Error al listar los productos agotados',
             error: err.message
+        });
+    }
+}
+
+export const mostSoldProducts = async (req,res) => {
+    try{
+        const { limite = 5, desde = 0 } = req.query
+        const query = { status: true }
+    
+        const [total, products ] = await Promise.all([
+            Product.countDocuments(query),
+            Product.find(query)
+                .sort({sold: -1})
+                .skip(Number(desde))
+                .limit(Number(limite))
+                .select('name sold _id')
+        ])
+    
+        return res.status(200).json({
+            succes: true,
+            message: "productos mas vendidos",
+            total,
+            products
+        });
+    }catch(err){
+        return res.status(500).json({
+            success: false,
+            msg: 'Error al listar los productos mas vendidos',
+            error: err.message
+        });
+    }
+}
+
+export const deleteProduct = async (req,res) => {
+    try{
+        const {pid} = req.params
+
+        const product = await Product.findByIdAndUpdate(pid, {status: false}, { new: true })
+
+        if(!product){
+            return res.status(400).json({
+                succes: false,
+                message: "El producto no existe"
+            })
+        }
+
+        return res.status(200).json({
+            succes: true,
+            message: "Producto eliminado",
+            product
+        })
+    }catch(err){
+        return res.status(500).json({
+            success: false,
+            msg: 'Error al eliminar el producto', 
+            error: err
         });
     }
 }

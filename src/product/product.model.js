@@ -24,11 +24,30 @@ const productSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Category',
         required: true
+    },
+    sold: {
+        type: Number,
+        default: 0
+    },
+    status: {
+        type: Boolean,
+        default: true
     }
 }, {
     versionKey: false,
     timestamps: true
 });
+
+productSchema.methods.purchase = async function(quantity){
+    if(quantity > this.quantity){
+        throw new Error('No hay suficiente stock')
+    }
+    
+    this.quantity -= quantity;
+    this.sold += quantity;
+    
+    await this.save()
+}
 
 productSchema.methods.toJSON = function(){
     const {_id, ...product} = this.toObject()

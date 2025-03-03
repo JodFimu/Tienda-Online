@@ -4,7 +4,7 @@ import { handleErrors } from "./handle-errors.js";
 import { deleteFileOnError } from "./delete-file-on-error.js"
 import { validateJWT } from "../middlewares/validate-jwt.js"
 import { hasRoles } from "../middlewares/validate-roles.js"
-import { categoryExistById, productExist } from "../helpers/db-validators.js"
+import { categoryExistById, productExist, productExistById } from "../helpers/db-validators.js"
 
 export const createProductValidator = [
     validateJWT,
@@ -35,6 +35,7 @@ export const getByIdValidator = [
     hasRoles("ADMIN_ROLE"),
     param("pid").notEmpty().withMessage("Es necesario el id"),
     param("pid").isMongoId().withMessage("No es un id valido"),
+    param("pid").custom(productExistById),
     validarCampos,
     handleErrors
 ]
@@ -62,6 +63,23 @@ export const inventoryValidator = [
 export const soldOutValidator = [
     validateJWT,
     hasRoles("ADMIN_ROLE"),
+    validarCampos,
+    handleErrors
+]
+
+export const mostSoldProductsValidator = [
+    validateJWT,
+    hasRoles("ADMIN_ROLE"),
+    validarCampos,
+    handleErrors
+]
+
+export const deleteProductValidator = [
+    validateJWT,
+    hasRoles("ADMIN_ROLE"),
+    param("pid").notEmpty().withMessage("Es necesario el id"),
+    param("pid").isMongoId().withMessage("No es un id valido"),
+    param("pid").custom(productExistById),
     validarCampos,
     handleErrors
 ]
