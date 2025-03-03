@@ -1,4 +1,6 @@
 import User from "../user/user.model.js"
+import Category from "../category/category.model.js"
+import Product from "../product/product.model.js"
 
 export const emailExists = async (email = "") => {
     const existe = await User.findOne({email})
@@ -46,31 +48,34 @@ export const isAdmin = async (uid = " ") =>{
     }
 }
 
-export const isHimself = async (uid = " ")=>{
-    const user = await User.findById(uid)
+export const categoryExist = async (name = " ")=>{
+    const exist = await Category.findOne({name})
 
-    return (req, res, next) =>{
-        if(!req.usuario){
-            return res.status(500).json({
-                success: false,
-                message: "Se quiere verificar un role antes de validar el token"
-            })
-        }
-
-        if(!roles.includes(req.usuario.role)){
-            return res.status(401).json({
-                success: false,
-                message:`El servicio requiere uno de estos roles ${roles}`
-            })
-        }
-        next()
+    if(exist){
+        throw new Error(`la categoria: ${name} ya existe`)
     }
 }
 
-export const categoryExist = async (name = " ")=>{
-    const exist = await Category.findOne(name)
+export const categoryExistById = async (cid = " ")=>{
+    const exist = await Category.findById(cid)
 
-    if(existe){
-        throw new Error(`la categoria: ${name} ya existe`)
+    if(!exist){
+        throw new Error("La categoria no existe")
+    }
+}
+
+export const productExist = async (name = " ")=>{
+    const exist = await Product.findOne({name})
+
+    if(exist){
+        throw new Error(`el producto: ${name} ya existe`)
+    }
+}
+
+export const productExistById = async (pid = " ")=>{
+    const exist = await Product.findById(pid)
+
+    if(!exist){
+        throw new Error("El producto no existe")
     }
 }

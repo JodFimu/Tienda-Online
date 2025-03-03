@@ -59,3 +59,51 @@ export const getProducts = async (req, res) => {
         })
     }
 }
+
+export const editProduct = async (req, res) => {
+    try {
+        const {pid} = req.params
+        
+        const data = req.body
+
+        const product = await Product.findByIdAndUpdate(pid, data, {new: true})
+        
+        return res.status(200).json({
+            succes: true,
+            message: "Producto actualizado",
+            product
+        });
+    } catch (err) {
+        return res.status(500).json({
+            succes: false,
+            message: "Error al actualizar el producto"
+        })
+    }
+}
+
+export const getProductsById = async (req,res) => {
+    try{
+        const {pid} = req.params
+
+        const product = await Product.findById(pid).populate("category", "name")
+
+        if(!product){
+            return res.status(400).json({
+                succes: false,
+                message: "El producto no existe"
+            })
+        }
+
+        return res.status(200).json({
+            succes: true,
+            message: "Producto encontrado",
+            product
+        })
+    }catch(err){
+        return res.status(500).json({
+            succes: false,
+            message: "Error al encontrar el producto",
+            error: err
+        })
+    }
+}
