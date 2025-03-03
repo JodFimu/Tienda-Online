@@ -3,9 +3,12 @@ import Category from "../category/category.model.js"
 
 export const createProduct = async (req, res) => {
     try {
+        let productImg = req.file ? req.file.filename : null;
         const data = req.body
 
-        const category = await Category.findById(data.cid)
+        data.productImg= productImg
+
+        const category = await Category.findById(data.category)
 
         if(!category){
             return res.status(401).json({
@@ -40,11 +43,12 @@ export const getProducts = async (req, res) => {
             Product.find(query)
                 .skip(Number(desde))
                 .limit(Number(limite))
+                .populate('category', 'name')
         ])
     
         res.status(200).json({
             succes: true,
-            message: "Categorias encontradas",
+            message: "productos encontrados",
             total,
             products
         });
