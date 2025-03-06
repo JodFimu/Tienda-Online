@@ -132,13 +132,13 @@ export const updateUserAdmin = async (req, res) => {
 
         const updatedUser = await User.findByIdAndUpdate(usuario._id, data, { new: true });
 
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             msg: 'Usuario Actualizado',
             user: updatedUser,
         });
     } catch (err) {
-        res.status(500).json({
+        return res.status(500).json({
             success: false,
             msg: 'Error al actualizar usuario',
             error: err.message
@@ -153,13 +153,13 @@ export const updateUserUser = async (req, res) => {
 
         const updatedUser = await User.findByIdAndUpdate(usuario._id, data, { new: true });
 
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             msg: 'Usuario Actualizado',
             user: updatedUser,
         });
     } catch (err) {
-        res.status(500).json({
+        return res.status(500).json({
             success: false,
             msg: 'Error al actualizar usuario',
             error: err.message
@@ -167,20 +167,20 @@ export const updateUserUser = async (req, res) => {
     }
 };
 
-export const updateRole = async (req,res) =>{
+export const updateRole = async (req,res) => {
     try {
         const { uid } = req.params;
         const newRole = "ADMIN_ROLE";
 
         const updatedUser = await User.findByIdAndUpdate(uid, { role: newRole }, { new: true });
 
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             msg: 'Usuario Actualizado',
             user: updatedUser,
         });
     } catch (err) {
-        res.status(500).json({
+        return res.status(500).json({
             success: false,
             msg: 'Error al actualizar usuario',
             error: err.message
