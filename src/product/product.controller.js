@@ -1,5 +1,10 @@
 import Product from "./product.model.js"
 import Category from "../category/category.model.js"
+import fs from "fs/promises";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export const createProduct = async (req, res) => {
     try {
@@ -219,5 +224,83 @@ export const deleteProduct = async (req,res) => {
             msg: 'Error al eliminar el producto', 
             error: err
         });
+    }
+}
+
+
+export const filterProducts = async (req,res) => {
+    try{
+        const { category, sort, keyWords } = req.body;
+        const filter = {};
+
+        if (keyWords) {
+            filter.name = { $regex: keyWords, $options: 'i' };
+        }
+ 
+        if (category) {
+            filter.category = category;
+        }
+ 
+        const sortOption = {};
+
+        if (sort === 'az') {
+            sortOption.name = 1;
+        } else if (sort === 'za') {
+            sortOption.name = -1;
+        } else if (sort === 'mostSold') {
+            sortOption.price = 1;
+        }
+
+        const products = await Product.find(filter)
+            .sort(sortOption)
+            .populate("category", "name");
+
+        return res.status(200).json({
+            success: true,
+            message: 'Productos filtrados',
+            products
+        });
+    }catch(err){
+        return res.status(500).json({
+            success: false,
+            msg: 'Error al filtrar los productos',
+            error: err.message
+        });
+    }
+}
+
+export const updateProductImg = async (req, res) => {
+    try {
+        const {pid} = req.params
+        const newProductImg = req.file ? req.file.filename : null
+
+        if(!newProductImg){
+            return res.status(400).json({
+                success: false,
+                msg: 'No se proporciono ningun archivo'
+            });
+        }
+
+        const product = await Product.findById(pid)
+
+        if(product.productImg){
+            const oldProductImg = join(__dirname, "../../public/uploads/products-img", product.productImg)
+            await fs.unlink(oldProductImg)
+        }
+
+        product.productImg = newProductImg
+        await product.save()
+
+        return res.status(200).json({
+            success: true,
+            msg: 'Imagen actualizada',
+            product
+        });
+    }catch (err) {
+        return res.status(500).json({
+            succes: false,
+            message: "Error al actualizar la imagen",
+            error: err
+        })
     }
 }

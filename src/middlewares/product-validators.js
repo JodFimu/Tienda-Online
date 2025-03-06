@@ -83,3 +83,25 @@ export const deleteProductValidator = [
     validarCampos,
     handleErrors
 ]
+
+export const filterProductsValidator = [
+    validateJWT,
+    hasRoles("ADMIN_ROLE", "CLIENT_ROLE"),
+    body("keyWords").optional(),
+    body("sort").optional(),
+    body("category").optional().isMongoId().withMessage("No es un id valido"),
+    body("category").optional().custom(categoryExistById),
+    validarCampos,
+    handleErrors
+]
+
+export const updateProductImgValidator = [
+    validateJWT,
+    hasRoles("ADMIN_ROLE"),
+    param("pid").notEmpty().withMessage("Es necesario el id"),
+    param("pid").isMongoId().withMessage("No es un id valido"),
+    param("pid").custom(productExistById),
+    validarCampos,
+    deleteFileOnError,
+    handleErrors
+]
