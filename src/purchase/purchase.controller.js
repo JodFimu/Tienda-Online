@@ -1,3 +1,4 @@
+import { ca } from "date-fns/locale"
 import Product from "../product/product.model.js"
 import User from "../user/user.model.js"
 
@@ -28,7 +29,15 @@ export const addProductToCart = async (req, res) => {
         const productInCart = user.cart.find(product => product.pid.toString() === pid)
 
         if(productInCart){
-            productInCart.quantity = Number(quantity) + productInCart.quantity
+            const newQuantity = Number(quantity) + productInCart.quantity
+
+            if (newQuantity > product.quantity) {
+                return res.status(400).json({
+                    message: "No hay suficiente stock disponible"
+                });
+            }
+
+            productInCart.quantity = newQuantity
         }else{
             user.cart.push({
                 pid: pid,
@@ -99,6 +108,69 @@ export const removeProductFromCart = async (req, res) => {
         return res.status(500).json({
             success: false,
             message: "Error al eliminar producto del carrito",
+            error: err.message
+        })
+    }
+}
+
+export const purchaseCart = async (req, res) => {
+    try {
+        const {usuario} = req
+
+        const user = await User.findById(usuario._id)
+
+        if(!user){
+            return res.status(404).json({
+                message: "Usuario no encontrado"
+            })
+        }
+
+        if(user.cart.length === 0){
+            return res.status(400).json({
+                message: "El carrito esta vacio"
+            })
+        }
+
+        user.cart = []
+        user.cartTotal = 0
+
+        await user.save()
+
+        return res.status(200).json({
+            success: true,
+            message: "Compra realizada"
+        })
+    }catch(err){    
+        return res.status(500).json({
+            success: false,
+            message: "Error al realizar compra",
+            error: err.message
+        })
+    }
+}
+
+export const getCart = async (req, res) => {
+    try {
+        const {usuario} = req
+
+        const user = await User.findById(usuario._id)
+            .populate("cart.pid", "name price productImg")
+
+        if(!user){
+            return res.status(404).json({
+                message: "Usuario no encontrado"
+            })
+        }
+
+        return res.status(200).json({
+            success: true,
+            data: user.cart,
+            total: user.cartTotal
+        })
+    }catch(err){
+        return res.status(500).json({
+            success: false,
+            message: "Error al obtener carrito",
             error: err.message
         })
     }
