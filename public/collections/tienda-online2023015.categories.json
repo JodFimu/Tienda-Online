@@ -1,0 +1,65 @@
+[{
+  "_id": {
+    "$oid": "67c5b875b4873628e01bcdb5"
+  },
+  "name": "anything",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-03-03T14:11:01.678Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-03T14:11:01.678Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cb286d9aa703642c1fbc2c"
+  },
+  "name": "tecnologia",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-03-07T17:10:05.232Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-07T17:10:05.232Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cb288a9aa703642c1fbc30"
+  },
+  "name": "deportes",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-03-07T17:10:34.834Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-07T17:10:34.834Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cb28979aa703642c1fbc34"
+  },
+  "name": "electrodomesticos",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-03-07T17:10:47.135Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-07T17:10:47.135Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cb28a49aa703642c1fbc38"
+  },
+  "name": "comestibles",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-03-07T17:11:00.750Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-07T17:11:00.750Z"
+  }
+}]

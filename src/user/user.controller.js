@@ -75,7 +75,16 @@ export const deleteUserAdmin = async (req, res) => {
 
 export const deleteUserClient = async (req, res) => {
     try {
-        const { usuario } = req.params;
+        const { usuario } = req;
+
+        console.log(usuario._id)
+
+        if (!usuario) {
+            return res.status(400).json({
+                success: false,
+                message: "Usuario no proporcionado"
+            });
+        }
 
         const user = await User.findByIdAndUpdate(usuario._id, { status: false }, { new: true });
 
@@ -111,7 +120,7 @@ export const updatePassword = async (req, res) => {
 
         const encryptedPassword = await hash(newPassword);
 
-        await User.findByIdAndUpdate(uid, { password: encryptedPassword }, { new: true });
+        await User.findByIdAndUpdate(usuario._id, { password: encryptedPassword }, { new: true });
 
         return res.status(200).json({
             success: true,
@@ -128,10 +137,10 @@ export const updatePassword = async (req, res) => {
 
 export const updateUserAdmin = async (req, res) => {
     try {
-        const { usuario } = req;
+        const { uid } = req.params;
         const data = req.body;
 
-        const updatedUser = await User.findByIdAndUpdate(usuario._id, data, { new: true });
+        const updatedUser = await User.findByIdAndUpdate(uid, data, { new: true });
 
         return res.status(200).json({
             success: true,

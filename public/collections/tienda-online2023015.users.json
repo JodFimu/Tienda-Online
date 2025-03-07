@@ -1,0 +1,67 @@
+[{
+  "_id": {
+    "$oid": "67c5b876b4873628e01bcdb8"
+  },
+  "name": "",
+  "surname": " ",
+  "username": "admin",
+  "email": "admin@gmail.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$QSh4+lGSsDR6NYOOm7i/gg$8lg5PLNxfk/1cjw+oWr9KFyzgWUHWS84RNFY2Eb7GBM",
+  "role": "ADMIN_ROLE",
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67cafa50aef6ff58238d72d5"
+  },
+  "name": "jose",
+  "surname": "figueroa",
+  "username": "jfigueroa",
+  "email": "jfigueroa@gmail.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$OSySXAnf9jHCordctdY1rQ$TO/Y1/K72IGhU0h3xb1DfzKxAr2VXnVG8+3yPIp6JOA",
+  "phone": "12345678",
+  "role": "ADMIN_ROLE",
+  "status": true,
+  "cartTotal": 30,
+  "cart": [
+    {
+      "pid": {
+        "$oid": "67c5dc630a40aef916f4711b"
+      },
+      "quantity": 3,
+      "_id": {
+        "$oid": "67cb1a587ad8c3bc6d086898"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "67cb26e49aa703642c1fbc17"
+  },
+  "name": "daniel",
+  "surname": "sacol",
+  "username": "dsacol",
+  "email": "dsacol@gmail.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$IvLg/eLKFA0Aj9AQ73PlQQ$Y1x9N1W/d0yN2RnTUhlooeAR5tTAu6do1EmpSdHXIEw",
+  "phone": "12345678",
+  "role": "CLIENT_ROLE",
+  "status": true,
+  "cartTotal": 0,
+  "cart": []
+},
+{
+  "_id": {
+    "$oid": "67cb270b9aa703642c1fbc1c"
+  },
+  "name": "diego",
+  "surname": "garcia",
+  "username": "dgarcia",
+  "email": "dgarcia@gmail.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$6hJB4AucAekgAGAwXc0Yew$xEc+RrJrZRtLgvrYMjgh1HWGJ9HOOfBTCtGEmvw2X5U",
+  "phone": "12345698",
+  "role": "CLIENT_ROLE",
+  "status": true,
+  "cartTotal": 0,
+  "cart": []
+}]
