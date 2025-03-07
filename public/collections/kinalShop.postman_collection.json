@@ -1,0 +1,1226 @@
+{
+	"info": {
+		"_postman_id": "3128a781-684b-442a-b13e-7c5e781f7659",
+		"name": "kinalShop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37634162"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"jose\",\r\n    \"surname\": \"figueroa\",\r\n    \"username\": \"jfigueroa\",\r\n    \"email\": \"jfigueroa@gmail.com\",\r\n    \"password\": \"Jd0987654!\",\r\n    \"phone\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/KinalShop/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"KinalShop",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"jfigueroa\",\r\n    \"password\": \"Jd0987654!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/kinalShop/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"kinalShop",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"Admin98!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/kinalShop/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"kinalShop",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "admin",
+					"item": [
+						{
+							"name": "getById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M1Yjg3NmI0ODczNjI4ZTAxYmNkYjgiLCJpYXQiOjE3NDEzNjU5NjYsImV4cCI6MTc0MTM2OTU2Nn0.Y1sYfGs-E_2B2v5S-_J1FAY0zT1QQjhoE3ImLfO3QHs",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/kinalShop/v1/user/findUser/67cafa50aef6ff58238d72d5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"kinalShop",
+										"v1",
+										"user",
+										"findUser",
+										"67cafa50aef6ff58238d72d5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M1Yjg3NmI0ODczNjI4ZTAxYmNkYjgiLCJpYXQiOjE3NDEzNjU5NjYsImV4cCI6MTc0MTM2OTU2Nn0.Y1sYfGs-E_2B2v5S-_J1FAY0zT1QQjhoE3ImLfO3QHs",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/kinalShop/v1/user/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"kinalShop",
+										"v1",
+										"user",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update user",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M1Yjg3NmI0ODczNjI4ZTAxYmNkYjgiLCJpYXQiOjE3NDEzNjU5NjYsImV4cCI6MTc0MTM2OTU2Nn0.Y1sYfGs-E_2B2v5S-_J1FAY0zT1QQjhoE3ImLfO3QHs",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"jose\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/kinalShop/v1/user/updateUserAdmin/67cafa50aef6ff58238d72d5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"kinalShop",
+										"v1",
+										"user",
+										"updateUserAdmin",
+										"67cafa50aef6ff58238d72d5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update rol",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M1Yjg3NmI0ODczNjI4ZTAxYmNkYjgiLCJpYXQiOjE3NDEzNjU5NjYsImV4cCI6MTc0MTM2OTU2Nn0.Y1sYfGs-E_2B2v5S-_J1FAY0zT1QQjhoE3ImLfO3QHs",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/kinalShop/v1/user/updateRole/67cafa50aef6ff58238d72d5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"kinalShop",
+										"v1",
+										"user",
+										"updateRole",
+										"67cafa50aef6ff58238d72d5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M1Yjg3NmI0ODczNjI4ZTAxYmNkYjgiLCJpYXQiOjE3NDEzNjU5NjYsImV4cCI6MTc0MTM2OTU2Nn0.Y1sYfGs-E_2B2v5S-_J1FAY0zT1QQjhoE3ImLfO3QHs",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/kinalShop/v1/user/deleteUserAdmin/67cafa50aef6ff58238d72d5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"kinalShop",
+										"v1",
+										"user",
+										"deleteUserAdmin",
+										"67cafa50aef6ff58238d72d5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "getHistory",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhZmE1MGFlZjZmZjU4MjM4ZDcyZDUiLCJpYXQiOjE3NDEzNjUwMDAsImV4cCI6MTc0MTM2ODYwMH0.pF655xHo96Os4_U3UY1pW--d_aUysK1Bcxfru7P4t7k",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/kinalShop/v1/user/getPurchaseHistory",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"kinalShop",
+										"v1",
+										"user",
+										"getPurchaseHistory"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhZmE1MGFlZjZmZjU4MjM4ZDcyZDUiLCJpYXQiOjE3NDEzNjYyODUsImV4cCI6MTc0MTM2OTg4NX0.0CHMLri55cGy33JeIf8MBnFHqABgd8Uw6-OtmX16SpI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/kinalShop/v1/user/deleteUserClient",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"kinalShop",
+										"v1",
+										"user",
+										"deleteUserClient"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhZmE1MGFlZjZmZjU4MjM4ZDcyZDUiLCJpYXQiOjE3NDEzNjYyODUsImV4cCI6MTc0MTM2OTg4NX0.0CHMLri55cGy33JeIf8MBnFHqABgd8Uw6-OtmX16SpI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"newPassword\": \"Dj160208-\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/kinalShop/v1/user/updatePassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"kinalShop",
+										"v1",
+										"user",
+										"updatePassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2NhZmE1MGFlZjZmZjU4MjM4ZDcyZDUiLCJpYXQiOjE3NDEzNjYyODUsImV4cCI6MTc0MTM2OTg4NX0.0CHMLri55cGy33JeIf8MBnFHqABgd8Uw6-OtmX16SpI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"david\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/kinalShop/v1/user/updateUser",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"kinalShop",
+										"v1",
+										"user",
+										"updateUser"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/kinalShop/v1/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"kinalShop",
+								"v1",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JiNjRmYTY5MmYwMGUxNDFjZWU0OTUiLCJpYXQiOjE3NDAzNDU4MTAsImV4cCI6MTc0MDM0OTQxMH0.mwDduQ4069RrkTMJUUQfPGiSQWSNfTCsNrEXLyerQIU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"tecnologia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/kinalShop/v1/category/createCategory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"kinalShop",
+								"v1",
+								"category",
+								"createCategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JiNjRmYTY5MmYwMGUxNDFjZWU0OTUiLCJpYXQiOjE3NDAzNDU4MTAsImV4cCI6MTc0MDM0OTQxMH0.mwDduQ4069RrkTMJUUQfPGiSQWSNfTCsNrEXLyerQIU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"tec\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/kinalShop/v1/category/updateCategory/67bb91e84f5d659f0f0a349d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"kinalShop",
+								"v1",
+								"category",
+								"updateCategory",
+								"67bb91e84f5d659f0f0a349d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JiNjRmYTY5MmYwMGUxNDFjZWU0OTUiLCJpYXQiOjE3NDAzNTAyOTEsImV4cCI6MTc0MDM1Mzg5MX0.cNsfm_SDLbYKxs8FJCzmBX_cmC-t1SbgAjpFE7F4-WI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/kinalShop/v1/category/deleteCategory/67bb91e84f5d659f0f0a349d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"kinalShop",
+								"v1",
+								"category",
+								"deleteCategory",
+								"67bb91e84f5d659f0f0a349d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "admin",
+					"item": [
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M1Yjg3NmI0ODczNjI4ZTAxYmNkYjgiLCJpYXQiOjE3NDEwMTEyNDUsImV4cCI6MTc0MTAxNDg0NX0.Yq7JwinOBYBRHMpjfo3Zv4sueHFIGrMosrMu_cwlBHU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "cereal",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "productImg",
+											"type": "file",
+											"src": "/C:/Users/Informatica/Pictures/Screenshots/Captura de pantalla 2025-01-15 135943.png"
+										},
+										{
+											"key": "description",
+											"value": "cereal sin azucar",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "6",
+											"type": "text"
+										},
+										{
+											"key": "category",
+											"value": "67c5b875b4873628e01bcdb5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.01:3000/KinalShop/v1/product/addProduct",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"01"
+									],
+									"port": "3000",
+									"path": [
+										"KinalShop",
+										"v1",
+										"product",
+										"addProduct"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M1Yjg3NmI0ODczNjI4ZTAxYmNkYjgiLCJpYXQiOjE3NDEwMTUyOTIsImV4cCI6MTc0MTAxODg5Mn0.xCltmbxR64K1NJ8SMw_ziadAi1xWowHNq2_dR4g04X0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.01:3000/KinalShop/v1/product/getProducts",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"01"
+									],
+									"port": "3000",
+									"path": [
+										"KinalShop",
+										"v1",
+										"product",
+										"getProducts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M1Yjg3NmI0ODczNjI4ZTAxYmNkYjgiLCJpYXQiOjE3NDEwMTUyOTIsImV4cCI6MTc0MTAxODg5Mn0.xCltmbxR64K1NJ8SMw_ziadAi1xWowHNq2_dR4g04X0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.01:3000/KinalShop/v1/product/getById/67c5bafe73a26aec61c13974",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"01"
+									],
+									"port": "3000",
+									"path": [
+										"KinalShop",
+										"v1",
+										"product",
+										"getById",
+										"67c5bafe73a26aec61c13974"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M1Yjg3NmI0ODczNjI4ZTAxYmNkYjgiLCJpYXQiOjE3NDEwMTUyOTIsImV4cCI6MTc0MTAxODg5Mn0.xCltmbxR64K1NJ8SMw_ziadAi1xWowHNq2_dR4g04X0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"zucaritas\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.01:3000/KinalShop/v1/product/updateProduct/67c5bafe73a26aec61c13974",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"01"
+									],
+									"port": "3000",
+									"path": [
+										"KinalShop",
+										"v1",
+										"product",
+										"updateProduct",
+										"67c5bafe73a26aec61c13974"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "inventory",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M1Yjg3NmI0ODczNjI4ZTAxYmNkYjgiLCJpYXQiOjE3NDEwMTUyOTIsImV4cCI6MTc0MTAxODg5Mn0.xCltmbxR64K1NJ8SMw_ziadAi1xWowHNq2_dR4g04X0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.01:3000/KinalShop/v1/product/inventory",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"01"
+									],
+									"port": "3000",
+									"path": [
+										"KinalShop",
+										"v1",
+										"product",
+										"inventory"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "soldOutProducts",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M1Yjg3NmI0ODczNjI4ZTAxYmNkYjgiLCJpYXQiOjE3NDEwMjI3MDUsImV4cCI6MTc0MTAyNjMwNX0.URzwrrOWerp50ktU1BIKb2p2B8W8PCuh89uvUUDotMk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.01:3000/KinalShop/v1/product/soldOutProducts",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"01"
+									],
+									"port": "3000",
+									"path": [
+										"KinalShop",
+										"v1",
+										"product",
+										"soldOutProducts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "mostSoldProducts",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M1Yjg3NmI0ODczNjI4ZTAxYmNkYjgiLCJpYXQiOjE3NDEwMTkzNjIsImV4cCI6MTc0MTAyMjk2Mn0.YO80yoNHmRfWc4Kn_jHRZ0hqHyHK6Pv3u1xTjvYd6qA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.01:3000/KinalShop/v1/product/mostSoldProducts",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"01"
+									],
+									"port": "3000",
+									"path": [
+										"KinalShop",
+										"v1",
+										"product",
+										"mostSoldProducts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M1Yjg3NmI0ODczNjI4ZTAxYmNkYjgiLCJpYXQiOjE3NDEwMjI3MDUsImV4cCI6MTc0MTAyNjMwNX0.URzwrrOWerp50ktU1BIKb2p2B8W8PCuh89uvUUDotMk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.01:3000/KinalShop/v1/product/deleteProduct/67c5bafe73a26aec61c13974",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"01"
+									],
+									"port": "3000",
+									"path": [
+										"KinalShop",
+										"v1",
+										"product",
+										"deleteProduct",
+										"67c5bafe73a26aec61c13974"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateImg",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JiNjRmYTY5MmYwMGUxNDFjZWU0OTUiLCJpYXQiOjE3NDEyMTg5NDgsImV4cCI6MTc0MTIyMjU0OH0.YE_I_g51YRbBY0JlxC2qVlqYNY39tQi8be6HbzzCugQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "newProductImg",
+											"type": "file",
+											"src": "/C:/Users/jdfig/Pictures/Saved Pictures/0_0.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.01:3000/KinalShop/v1/product/updateImg/67c7b1a26de56d07e631bcf5",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"01"
+									],
+									"port": "3000",
+									"path": [
+										"KinalShop",
+										"v1",
+										"product",
+										"updateImg",
+										"67c7b1a26de56d07e631bcf5"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "user",
+					"item": [
+						{
+							"name": "filter",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JiNjRmYTY5MmYwMGUxNDFjZWU0OTUiLCJpYXQiOjE3NDExNDAyOTksImV4cCI6MTc0MTE0Mzg5OX0.Ci8qWJktRsIDux48dD_Som3GNmnu-Vwo7f2sWPShb9Y",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"sort\": \"mostSold\",\r\n    \"keyWords\": \"z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.01:3000/KinalShop/v1/product/filterProducts",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"01"
+									],
+									"port": "3000",
+									"path": [
+										"KinalShop",
+										"v1",
+										"product",
+										"filterProducts"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "purchase",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M5MTFhMTBhMjU0MDIxM2VlZWJjMWYiLCJpYXQiOjE3NDEzMTM5MTAsImV4cCI6MTc0MTMxNzUxMH0.oowoSkFvSelXUV-STPw1DAjZILNmAVZVjXLjfjf_8_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pid\": \"67c7b1a96de56d07e631bcfb\",\r\n    \"quantity\": \"3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/KinalShop/v1/purchase/addToCart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"KinalShop",
+								"v1",
+								"purchase",
+								"addToCart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M5MTFhMTBhMjU0MDIxM2VlZWJjMWYiLCJpYXQiOjE3NDEzMTM5MTAsImV4cCI6MTc0MTMxNzUxMH0.oowoSkFvSelXUV-STPw1DAjZILNmAVZVjXLjfjf_8_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pid\": \"67c7b1a96de56d07e631bcfb\",\r\n    \"quantity\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/KinalShop/v1/purchase/removeFromCart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"KinalShop",
+								"v1",
+								"purchase",
+								"removeFromCart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "purchase",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M5MTFhMTBhMjU0MDIxM2VlZWJjMWYiLCJpYXQiOjE3NDEzMTk3NTQsImV4cCI6MTc0MTMyMzM1NH0.jU_SUR0sRqCzHeDv4VHzkcpM-SychZ1OLMxB_y5sEtc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/KinalShop/v1/purchase/purchase",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"KinalShop",
+								"v1",
+								"purchase",
+								"purchase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M5MTFhMTBhMjU0MDIxM2VlZWJjMWYiLCJpYXQiOjE3NDEzMTk3NTQsImV4cCI6MTc0MTMyMzM1NH0.jU_SUR0sRqCzHeDv4VHzkcpM-SychZ1OLMxB_y5sEtc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/KinalShop/v1/purchase/getCart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"KinalShop",
+								"v1",
+								"purchase",
+								"getCart"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "bill",
+			"item": [
+				{
+					"name": "updateBill",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M1Yjg3NmI0ODczNjI4ZTAxYmNkYjgiLCJpYXQiOjE3NDEzNjM4NzcsImV4cCI6MTc0MTM2NzQ3N30.45NTWhmVxGXe3zJK5QbdVvA_JRpaXK1RWp_2tVjb4SE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pid\": \"67c5bafe73a26aec61c13974\",\r\n    \"quantity\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.01:3000/KinalShop/v1/bill/updateBill/67cafb2ab5641ffe04ea3486",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"01"
+							],
+							"port": "3000",
+							"path": [
+								"KinalShop",
+								"v1",
+								"bill",
+								"updateBill",
+								"67cafb2ab5641ffe04ea3486"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

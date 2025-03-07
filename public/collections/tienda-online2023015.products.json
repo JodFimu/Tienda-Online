@@ -1,0 +1,125 @@
+[{
+  "_id": {
+    "$oid": "67c5bafe73a26aec61c13974"
+  },
+  "name": "zucaritas",
+  "price": 10,
+  "productImg": "Captura de pantalla 2025-01-15 135943-1741011710138.png",
+  "description": "cereal sin azucar",
+  "status": false,
+  "quantity": 0,
+  "category": {
+    "$oid": "67c5b875b4873628e01bcdb5"
+  },
+  "createdAt": {
+    "$date": "2025-03-03T14:21:50.176Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-03T17:26:42.448Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cb291b9aa703642c1fbc3e"
+  },
+  "name": "lavadora",
+  "price": 5000,
+  "productImg": "Captura de pantalla 2025-01-14 170017-1741367579800.png",
+  "description": "Lavadora",
+  "quantity": 50,
+  "category": {
+    "$oid": "67cb28979aa703642c1fbc34"
+  },
+  "sold": 0,
+  "status": true,
+  "createdAt": {
+    "$date": "2025-03-07T17:12:59.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-07T17:12:59.824Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cb29769aa703642c1fbc44"
+  },
+  "name": "huevos",
+  "price": 36,
+  "productImg": "Captura de pantalla 2025-01-14 170017-1741367670275.png",
+  "description": "huevos de granja",
+  "quantity": 50,
+  "category": {
+    "$oid": "67cb28a49aa703642c1fbc38"
+  },
+  "sold": 0,
+  "status": true,
+  "createdAt": {
+    "$date": "2025-03-07T17:14:30.335Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-07T17:14:30.335Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cb299d9aa703642c1fbc4a"
+  },
+  "name": "PC",
+  "price": 10000,
+  "productImg": "Captura de pantalla 2025-01-14 170017-1741367709878.png",
+  "description": "pc gamer",
+  "quantity": 10,
+  "category": {
+    "$oid": "67cb286d9aa703642c1fbc2c"
+  },
+  "sold": 0,
+  "status": true,
+  "createdAt": {
+    "$date": "2025-03-07T17:15:09.894Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-07T17:15:09.894Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cb29d59aa703642c1fbc50"
+  },
+  "name": "zapatos nike",
+  "price": 800,
+  "productImg": "Captura de pantalla 2025-01-14 170017-1741367765384.png",
+  "description": "zapatos nike",
+  "quantity": 5,
+  "category": {
+    "$oid": "67cb288a9aa703642c1fbc30"
+  },
+  "sold": 0,
+  "status": true,
+  "createdAt": {
+    "$date": "2025-03-07T17:16:05.395Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-07T17:16:05.395Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67cb2a359aa703642c1fbc5a"
+  },
+  "name": "semillas de arbol",
+  "price": 5,
+  "productImg": "Captura de pantalla 2025-01-14 170017-1741367861326.png",
+  "description": "semillas pra jardin",
+  "quantity": 20,
+  "category": {
+    "$oid": "67c5b875b4873628e01bcdb5"
+  },
+  "sold": 0,
+  "status": true,
+  "createdAt": {
+    "$date": "2025-03-07T17:17:41.342Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-07T17:17:41.342Z"
+  }
+}]

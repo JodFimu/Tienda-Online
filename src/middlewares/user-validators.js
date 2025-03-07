@@ -121,4 +121,9 @@ export const updateRoleValidator =[
     handleErrors
 ]
 
-
+export const getPurchasesValidator = [
+    validateJWT,
+    hasRoles("CLIENT_ROLE"),
+    validarCampos,
+    handleErrors
+]

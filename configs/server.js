@@ -12,6 +12,7 @@ import userRoutes from "../src/user/user.routes.js"
 import categoryRoutes from "../src/category/category.routes.js"
 import productRoutes from "../src/product/product.routes.js"
 import purchaseRoutes from "../src/purchase/purchase.routes.js"
+import billRoutes from "../src/bill/bill.routes.js"
 import {createAdmin, createDefaultCategory} from "./default-data.js"
 
 const middlewares = (app) => {
@@ -30,6 +31,7 @@ const routes = (app) => {
     app.use("/KinalShop/v1/category", categoryRoutes);
     app.use("/KinalShop/v1/product", productRoutes);
     app.use("/KinalShop/v1/purchase", purchaseRoutes);
+    app.use("/KinalShop/v1/bill", billRoutes);
 }
 
 const conectarDB = async () => {
