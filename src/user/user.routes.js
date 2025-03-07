@@ -1,6 +1,8 @@
 import { Router } from "express";
-import { getUserById, getUsers, deleteUserAdmin, updatePassword, updateUserUser, updateUserAdmin, updateRole, deleteUserClient } from "./user.controller.js";
-import { getUserByIdValidator, updatePasswordValidator, deleteUserValidatorClient, deleteUserValidatorAdmin, createUserValidation, updateRoleValidator, getUserValidation } from "../middlewares/user-validators.js";
+import { getUserById, getUsers, deleteUserAdmin, updatePassword, updateUserUser, updateUserAdmin, updateRole, 
+    deleteUserClient, getPurchases } from "./user.controller.js";
+import { getUserByIdValidator, updatePasswordValidator, deleteUserValidatorClient, deleteUserValidatorAdmin, 
+    createUserValidation, updateRoleValidator, getUserValidation, getPurchasesValidator } from "../middlewares/user-validators.js";
 import { register } from "../auth/auth.controller.js";
 
 const router = Router();
@@ -265,5 +267,22 @@ router.post("/createUser", createUserValidation, register);
  *     roles: [ADMIN_ROLE]
  */
 router.patch("/updateRole/:uid", updateRoleValidator, updateRole);
+
+/**
+ * @swagger
+ * /getPurchaseHistory:
+ *   get:
+ *     summary: Obtener historial de compras del usuario
+ *     tags: [User]
+ *     responses:
+ *       200:
+ *         description: Historial de compras del usuario
+ *       500:
+ *         description: Error del servidor
+ *     security:
+ *       - bearerAuth: []
+ *     roles: [CLIENT_ROLE]
+ */
+router.get("/getPurchaseHistory", getPurchasesValidator, getPurchases);
 
 export default router;

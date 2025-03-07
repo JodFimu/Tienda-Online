@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose"
+import Product from "../product/product.model.js"
 
 const billSchema = Schema({
     user:{
@@ -28,7 +29,16 @@ const billSchema = Schema({
         timeStamps: true
     })
 
-
+billSchema.methods.calculateTotal = async function() {
+    let total = 0;
+    for (const item of this.products) {
+        const product = await Product.findById(item.pid);
+        if (product) {
+            total += product.price * item.quantity;
+        }
+    }
+    this.subTotal = total;
+};
 
 billSchema.methods.toJSON = function () {
     const { _id, ...bill } = this.toObject()

@@ -1,5 +1,6 @@
 import { hash, verify } from "argon2";
 import User from "./user.model.js";
+import Bill from "../bill/bill.model.js";
 
 export const getUserById = async (req, res) => {
     try {
@@ -183,6 +184,25 @@ export const updateRole = async (req,res) => {
         return res.status(500).json({
             success: false,
             msg: 'Error al actualizar usuario',
+            error: err.message
+        });
+    }
+}
+
+export const getPurchases = async (req, res) => {
+    try {
+        const { usuario } = req;
+
+        const purchases = await Bill.find( {user: usuario._id });
+
+        return res.status(200).json({
+            success: true,
+            purchases: purchases
+        });
+    }catch (err) {
+        return res.status(500).json({
+            success: false,
+            message: "Error al obtener las compras",
             error: err.message
         });
     }
