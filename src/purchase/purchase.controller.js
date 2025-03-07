@@ -1,6 +1,7 @@
-import { ca } from "date-fns/locale"
 import Product from "../product/product.model.js"
 import User from "../user/user.model.js"
+import Bill from "../bill/bill.model.js"
+import {generateInvoicePdf} from "../helpers/generate-bill.js"
 
 export const addProductToCart = async (req, res) => {
     try {
@@ -24,6 +25,12 @@ export const addProductToCart = async (req, res) => {
             return res.status(404).json({
                 message: "Usuario no encontrado"
             })
+        }
+
+        if (product.quantity < quantity) {
+            return res.status(400).json({
+                message: "No hay suficiente stock disponible"
+            });
         }
 
         const productInCart = user.cart.find(product => product.pid.toString() === pid)
@@ -130,6 +137,16 @@ export const purchaseCart = async (req, res) => {
                 message: "El carrito esta vacio"
             })
         }
+
+        const newbill = await new Bill({
+            user: usuario._id,
+            products: user.cart,
+            subTotal: user.cartTotal
+        }).save();
+
+        req.billId = newbill._id; 
+
+        await generateInvoicePdf(req, res);
 
         user.cart = []
         user.cartTotal = 0
