@@ -5,11 +5,15 @@
 - **Email:** admin@gmail.com
 - **Contraseña:** Admin98!
 
+## Facturas
+
+- Las facturas se generan dentro del proyecto en public/docs
+
 ## Cómo iniciar el proyecto
 
 1. Clona el repositorio:
     ```bash
-    git clone <URL_DEL_REPOSITORIO>
+    git clone https://github.com/JodFimu/Tienda-Online.git
     ```
 
 2. Navega al directorio del proyecto:
@@ -25,12 +29,12 @@
 4. Configura las variables de entorno (crea un archivo `.env` si no existe y añade las variables necesarias):
     ```env
     PORT=3000
-    MONGODB_URI=<TU_URI_DE_MONGODB>
+    MONGODB_URI=mongodb://localhost:27017/tienda-online2023015
     ```
 
 5. Inicia el proyecto:
     ```bash
-    npm start
+    node --watch index.js
     ```
 
 6. El proyecto estará disponible en `http://localhost:3000`
